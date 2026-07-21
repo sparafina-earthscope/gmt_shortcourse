@@ -23,9 +23,9 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 ENV PATH=$PATH:$JAVA_HOME/bin
 
 # Download and extract TauP 3.1.0
-RUN wget https://github.com/crotwell/TauP/releases/download/v3.1.0/TauP-3.1.0.zip -O taup.zip \
-    && unzip taup.zip -d /opt/ \
-    && rm taup.zip
+# RUN wget https://github.com/crotwell/TauP/releases/download/v3.1.0/TauP-3.1.0.zip -O taup.zip \
+#     && unzip taup.zip -d /opt/ \
+#     && rm taup.zip
 
 # Set environment variables so the taup commands are in the PATH
 ENV PATH="/opt/TauP-3.1.0/bin:${PATH}"
@@ -42,10 +42,13 @@ WORKDIR /opt
 #     && unzip /opt/TauP-3.1.0.zip \
 #     &&  echo 'export PATH=$PATH:/opt/TauP-3.1.0/bin'  >> /etc/profile \
 #     && rm /opt/TauP-3.1.0.zip
+# RUN wget https://github.com/crotwell/TauP/releases/download/v3.1.0/TauP-3.1.0.zip -O taup.zip \
+#     && unzip taup.zip -d /opt/ \
+#     && rm taup.zip
 
-RUN wget -P /opt/ https://zenodo.org/records/16884103/files/TauP-3.1.0.zip \
-    && unzip /opt/TauP-3.1.0.zip -d /opt/ \
-    && rm /opt/TauP-3.1.0.zip
+RUN wget -P /opt/ https://zenodo.org/records/16884103/files/TauP-3.1.0.zip  -O taup.zip \
+    && unzip /opt/taup.zip -d /opt/ \
+    && rm /opt/taup.zip
 ENV PATH="/opt/TauP-3.1.0/bin:${PATH}"
 
 
