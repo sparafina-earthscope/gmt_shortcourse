@@ -23,7 +23,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 ENV PATH=$PATH:$JAVA_HOME/bin
 
 # Download and extract TauP 3.1.0
-RUN wget https://github.com -O taup.zip \
+RUN wget https://github.com/crotwell/TauP/releases/download/v3.1.0/TauP-3.1.0.zip -O taup.zip \
     && unzip taup.zip -d /opt/ \
     && rm taup.zip
 
