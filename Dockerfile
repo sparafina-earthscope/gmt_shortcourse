@@ -15,6 +15,7 @@ RUN apt-get update -qq --yes > /dev/null \
     && apt-get install xdg-utils --yes \
     && apt-get install libsqlite3-0 --yes \
     && apt-get install -y openjdk-21-jre-headless \
+    && apt-get install zip unzip \
     && apt-get clean
 
 # Set up the environment variables
