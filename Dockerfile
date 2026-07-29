@@ -24,14 +24,14 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 # Set GMT_DATA_SERVER
 ENV GMT_DATA_SERVER="oceania"
 
-# Set GDAL_DRIVER_PATH
-ENV GDAL_DRIVER_PATH=/srv/conda/lib/gdalplugins/
-
 # unminimize to install man-db
 RUN yes | unminimize
 
 #install gmt and pygmt from conda-forge
-RUN conda install -c conda-forge --yes gmt==6.6.0 pygmt gdal=3.12 libgdal-jp2openjpeg
+RUN conda install -c conda-forge --yes gmt==6.6.0 pygmt
+
+# Set GDAL_DRIVER_PATH
+ENV GDAL_DRIVER_PATH=/srv/conda/lib/gdalplugins/:/srv/conda/envs/notebook/lib/gdalplugins/
 
 # install taup
 WORKDIR /opt
