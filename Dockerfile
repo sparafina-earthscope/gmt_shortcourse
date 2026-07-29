@@ -28,7 +28,7 @@ ENV GMT_DATA_SERVER="oceania"
 RUN yes | unminimize
 
 #install gmt and pygmt from conda-forge
-RUN conda install -c conda-forge --yes gmt==6.6.0 pygmt gdal=3.12
+RUN conda install -c conda-forge --yes gmt==6.6.0 pygmt gdal=3.12 libgdal-jp2openjpeg
 
 # install taup
 WORKDIR /opt
