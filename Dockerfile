@@ -31,7 +31,14 @@ RUN yes | unminimize
 RUN conda install -c conda-forge --yes gmt==6.6.0 pygmt
 
 # Set GDAL_DRIVER_PATH
-ENV GDAL_DRIVER_PATH=/srv/conda/lib/gdalplugins/:/srv/conda/envs/notebook/lib/gdalplugins/
+# RUN echo 'export GDAL_DRIVER_PATH=/srv/conda/lib/gdalplugins/:/srv/conda/envs/notebook/lib/gdalplugins/' \
+#     > /srv/conda/envs/notebook/etc/conda/activate.d/zz-gdal-driver-path.sh
+
+# RUN . /srv/conda/etc/profile.d/conda.sh && conda activate notebook && \
+#     echo "$GDAL_DRIVER_PATH"
+
+# copy JP2 plugin
+COPY --chown=100:100 gdal_JP2OpenJPEG.so /srv/conda/envs/notebook/lib/gdalplugins/gdal_JP2OpenJPEG.so
 
 # install taup
 WORKDIR /opt
