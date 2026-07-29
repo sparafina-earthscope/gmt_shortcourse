@@ -121,7 +121,6 @@ RUN mkdir -p /home/$NB_USER/.vnc && \
 
 # copy JP2 plugin
 COPY --chown=jovyan:jovyan --chmod=664 gdal_JP2OpenJPEG.so /srv/conda/envs/notebook/lib/gdalplugins/
-RUN ls /srv/conda/envs/notebook/lib/gdalplugins/
 
 # Switch to notebook user for Python package installation
 USER $NB_USER
