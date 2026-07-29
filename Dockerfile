@@ -24,6 +24,9 @@ ENV PATH=$PATH:$JAVA_HOME/bin
 # Set GMT_DATA_SERVER
 ENV GMT_DATA_SERVER="oceania"
 
+# Set GDAL_DRIVER_PATH
+ENV GDAL_DRIVER_PATH=/srv/conda/lib/gdalplugins/
+
 # unminimize to install man-db
 RUN yes | unminimize
 
