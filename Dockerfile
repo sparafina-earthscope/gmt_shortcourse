@@ -120,6 +120,9 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /home/$NB_USER/.vnc && \
     chown -R $NB_USER:$NB_GID /home/$NB_USER
 
+# copy JP2 plugin
+COPY --chown=jovyan:jovyan --chmod=664 gdal_JP2OpenJPEG.so /srv/conda/envs/notebook/lib/gdalplugins/
+
 # Switch to notebook user for Python package installation
 USER $NB_USER
 
