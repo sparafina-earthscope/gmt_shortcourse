@@ -28,7 +28,7 @@ ENV GMT_DATA_SERVER="oceania"
 RUN yes | unminimize
 
 #install gmt and pygmt from conda-forge
-RUN conda install -c conda-forge --yes gmt==6.6.0 pygmt
+RUN conda install -c conda-forge --yes pygmt gmt==6.6.0 gdal==3.12  
 
 # Set GDAL_DRIVER_PATH
 # RUN echo 'export GDAL_DRIVER_PATH=/srv/conda/lib/gdalplugins/:/srv/conda/envs/notebook/lib/gdalplugins/' \
