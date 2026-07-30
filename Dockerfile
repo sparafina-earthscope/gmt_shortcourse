@@ -28,7 +28,7 @@ ENV GMT_DATA_SERVER="oceania"
 RUN yes | unminimize
 
 #install gmt and pygmt from conda-forge
-RUN conda install -c conda-forge --yes gmt==6.6.0 pygmt
+RUN conda install -c conda-forge --yes pygmt gmt==6.6.0 gdal=3.12
 
 # Set GDAL_DRIVER_PATH
 # RUN echo 'export GDAL_DRIVER_PATH=/srv/conda/lib/gdalplugins/:/srv/conda/envs/notebook/lib/gdalplugins/' \
@@ -36,9 +36,6 @@ RUN conda install -c conda-forge --yes gmt==6.6.0 pygmt
 
 # RUN . /srv/conda/etc/profile.d/conda.sh && conda activate notebook && \
 #     echo "$GDAL_DRIVER_PATH"
-
-# copy JP2 plugin
-COPY --chown=100:100 gdal_JP2OpenJPEG.so /srv/conda/envs/notebook/lib/gdalplugins/gdal_JP2OpenJPEG.so
 
 # install taup
 WORKDIR /opt
@@ -121,6 +118,10 @@ RUN apt-get update && apt-get install -y \
 # Create VNC directory for the notebook user
 RUN mkdir -p /home/$NB_USER/.vnc && \
     chown -R $NB_USER:$NB_GID /home/$NB_USER
+
+# copy JP2 plugin
+COPY --chown=jovyan:jovyan --chmod=664 gdal_JP2OpenJPEG.so /srv/conda/envs/notebook/lib/gdalplugins/
+RUN ls /srv/conda/envs/notebook/lib/gdalplugins/
 
 # Switch to notebook user for Python package installation
 USER $NB_USER
